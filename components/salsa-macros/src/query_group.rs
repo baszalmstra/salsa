@@ -15,8 +15,6 @@ use syn::{
 pub(crate) fn query_group(args: TokenStream, input: TokenStream) -> TokenStream {
     let group_struct = parse_macro_input!(args as Ident);
     let input: ItemTrait = parse_macro_input!(input as ItemTrait);
-    // println!("args: {:#?}", args);
-    // println!("input: {:#?}", input);
 
     let (trait_attrs, salsa_attrs) = filter_attrs(input.attrs);
     let mut requires: Punctuated<Path, Token![+]> = Punctuated::new();
